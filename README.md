@@ -40,13 +40,6 @@ git clone # TODO: add your repo url here
    <version>0.8.8</version>
 </dependency>
 
-<!--jadis-->
-<dependency>
-   <groupId>redis.clients</groupId>
-   <artifactId>jedis</artifactId>
-   <version>4.3.1</version>
-</dependency>
-
 <!--swagger-->
 <dependency>
    <groupId>org.springdoc</groupId>
