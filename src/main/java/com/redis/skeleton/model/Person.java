@@ -2,19 +2,13 @@ package com.redis.skeleton.model;
 
 import java.util.Set;
 
-import com.redis.skeleton.model.Address;
+import lombok.*;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.geo.Point;
 
 import com.redis.om.spring.annotations.Document;
 import com.redis.om.spring.annotations.Indexed;
 import com.redis.om.spring.annotations.Searchable;
-
-import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
-import lombok.Data;
-import lombok.NonNull;
-import lombok.RequiredArgsConstructor;
 
 @RequiredArgsConstructor(staticName = "of")
 @AllArgsConstructor(access = AccessLevel.PROTECTED)
@@ -27,17 +21,17 @@ public class Person {
     private String id;
 
     // Indexed for exact text matching
-    @Indexed
     @NonNull
+    @Indexed
     private String firstName;
 
-    @Indexed
     @NonNull
+    @Indexed
     private String lastName;
 
     //Indexed for numeric matches
-    @Indexed
     @NonNull
+    @Indexed
     private Integer age;
 
     //Indexed for Full Text matches
@@ -46,16 +40,16 @@ public class Person {
     private String personalStatement;
 
     //Indexed for Geo Filtering
-    @Indexed
     @NonNull
+    @Indexed
     private Point homeLoc;
 
     // Nest indexed object
-    @Indexed
     @NonNull
+    @Indexed
     private Address address;
 
-    @Indexed
     @NonNull
+    @Indexed
     private Set<String> skills;
 }

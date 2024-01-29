@@ -4,6 +4,7 @@ import com.redis.skeleton.model.Address;
 import com.redis.skeleton.model.Person;
 import com.redis.skeleton.repository.PeopleRepository;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.Metrics;
 import org.springframework.data.geo.Point;
@@ -79,15 +80,20 @@ public class PeopleControllerV1 {
     @GetMapping("age_between")
     @Operation(summary = "Query the data by age between", tags = {"Read"})
     Iterable<Person> byAgeBetween(
-            @RequestParam("min") int min, //
+            @Parameter(description = "min age", example = "30")
+            @RequestParam("min") int min,
+            @Parameter(description = "max age", example = "40")
             @RequestParam("max") int max) {
         return repo.findByAgeBetween(min, max);
     }
 
     @GetMapping("name")
     @Operation(summary = "Query the data by first name and last name", tags = {"Read"})
-    Iterable<Person> byFirstNameAndLastName(@RequestParam("first") String firstName,
-                                            @RequestParam("last") String lastName) {
+    Iterable<Person> byFirstNameAndLastName(
+            @Parameter(description = "first name", example = "Chris")
+            @RequestParam("first") String firstName,
+            @Parameter(description = "last name", example = "Hemsworth")
+            @RequestParam("last") String lastName) {
         return repo.findByFirstNameAndLastName(firstName, lastName);
     }
 
@@ -95,27 +101,36 @@ public class PeopleControllerV1 {
     @GetMapping("homeloc")
     @Operation(summary = "Query the data by home location ( not working, Redis Inc. has announced the end-of-life of RedisGraph. Check here https://redis.com/blog/redisgraph-eol/ ", tags = {"Read"})
     Iterable<Person> byHomeLoc(
+            @Parameter(description = "latitude", example = "-28.716667")
             @RequestParam("lat") double lat,
+            @Parameter(description = "longitude", example = "153.616667")
             @RequestParam("lon") double lon,
+            @Parameter(description = "distance", example = "100")
             @RequestParam("d") double distance) {
         return repo.findByHomeLocNear(new Point(lon, lat), new Distance(distance, Metrics.MILES));
     }
 
     @GetMapping("statement")
     @Operation(summary = "Query the data by personal statement", tags = {"Read"})
-    Iterable<Person> byPersonalStatement(@RequestParam("q") String q) {
+    Iterable<Person> byPersonalStatement(
+            @Parameter(description = "personal statement", example = "The Rabbit Is Correct, And Clearly The Smartest One Among You.")
+            @RequestParam("q") String q) {
         return repo.searchByPersonalStatement(q);
     }
 
     @GetMapping("city")
     @Operation(summary = "Query the data by city", tags = {"Read"})
-    Iterable<Person> byCity(@RequestParam("city") String city) {
+    Iterable<Person> byCity(
+            @Parameter(description = "city", example = "New York")
+            @RequestParam("city") String city) {
         return repo.findByAddress_City(city);
     }
 
     @GetMapping("skills")
     @Operation(summary = "Query the data by skills", tags = {"Read"})
-    Iterable<Person> byAnySkills(@RequestParam("skills") Set<String> skills) {
+    Iterable<Person> byAnySkills(
+            @Parameter(description = "skills", example = "hammer")
+            @RequestParam("skills") Set<String> skills) {
         return repo.findBySkills(skills);
     }
 
