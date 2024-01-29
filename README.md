@@ -463,7 +463,7 @@ public class PeopleControllerV1 {
     </dependency>
     ```
   - If your redis om dependency version is 0.8.8, like our setting in pom.xml, then it's ok. It's include the jadis dependency.
-
+4. When you run your application, we can inspect the console, redis om will scan the @Document and @Indexed to create the index for your json model.
 ## Reference
 
 - [Redis doc](https://redis.io/doc)
