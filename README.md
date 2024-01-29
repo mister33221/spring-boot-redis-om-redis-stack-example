@@ -111,7 +111,7 @@ public class SpringDocConfig {
 }
 ```
   - `@EnableRedisDocumentRepositories`: This only for Redis OM, scan the redis documents(model) and repository. Do not use `@EnableRedisRepositories` in the same time.
-  - `com.redis.skeleton.repository`: Is the package name of your Redis OM repository.
+  - `com.redis.skeleton`: Is where the redis documents(model) and repository located.
 ```java
 package com.redis.skeleton;
 
