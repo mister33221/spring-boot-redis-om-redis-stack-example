@@ -1,5 +1,6 @@
 # Skeleton of Spring Boot + Redis OM + Redis Stack
 
+The most important thing in the begining is [Redis OM](https://redis.io/docs/connect/clients/om-clients/) is still on Beta.
 This project is a skeleton of Spring Boot + Redis OM + Redis stack.
 The purpose of this project is to provide some demo code for the Redis OM and the Redis stack.
 
