@@ -21,7 +21,7 @@ Follow the steps below to make a local copy of this project.
 
 - You can just clone this repo by using the following command.
 ```sh
-git clone # TODO: add your repo url here
+git clone https://github.com/mister33221/spring-boot-redis-om-redis-stack-example.git
 ```
 - Or build a new project by yourself. Follow the steps below.
 1. Create a new project by using [Spring Initializr](https://start.spring.io/).
